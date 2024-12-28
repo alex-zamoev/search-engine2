@@ -3,7 +3,6 @@
 //
 #include <iostream>
 #include <fstream>
-#include <exception>
 #include <stdexcept>
 #include "../include/ConverterJSON.h"
 #include <iterator>
