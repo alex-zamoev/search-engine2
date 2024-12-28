@@ -21,19 +21,12 @@ struct RelativeIndex{
 
 class SearchServer {
 public:
-/*
-* @param idx в конструктор класса передаётся ссылка на класс InvertedIndex,
-* чтобы SearchServer мог узнать частоту слов встречаемых в запросе
-*/
     SearchServer(InvertedIndex& idx) : _index(idx){};
-    ~SearchServer(){std::cout << "Destructor\n";}
-/*
-Метод обработки поисковых запросов @param queries_input поисковые запросы
-взятые из файла requests.json
-@return возвращает отсортированный список релевантных ответов для заданных запросов
-*/
+    ~SearchServer(){}
+
     std::map<int, std::vector<RelativeIndex>> search(const
                                                    std::vector<std::string>& queries_input);
+    //Для GoogleTest
     std::vector<std::vector<RelativeIndex>> searchTest(const std::vector<std::string>& queries_input);
 private:
     InvertedIndex _index;

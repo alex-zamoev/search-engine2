@@ -71,8 +71,7 @@ std::map<int, std::vector<RelativeIndex>> SearchServer::search(const std::vector
             std::cout << tt.doc_id << ", " << tt.rank << std::endl;
         }
         std::cout << "}" << std::endl;
-        std::cout << "--------next--------" << std::endl;
-    }
+     }
     return rltIndx;
 };
 

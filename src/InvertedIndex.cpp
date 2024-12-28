@@ -50,16 +50,7 @@ void InvertedIndex::Thread(int i, std::vector<std::string> txt){
     std::vector<std::string> words;
     std::regex sepre(R"([\s,\.\!\-,]+)");
     for (auto & t : txt){
- /*       const char *temp = t.c_str();
-        char * str = (char*)temp;
-        char *res1 = std::strtok (str," ,.+-!?"); // во втором параметре указаны разделитель (пробел, запятая, точка, тире)
-
-        while (res1 != NULL)                         // пока есть лексемы
-        {
-            words.push_back(res1);
-            res1 = strtok (NULL, " ,.-!?");
-        }*/
-        std::sregex_token_iterator iter(t.begin(), t.end(), sepre, -1), end;
+         std::sregex_token_iterator iter(t.begin(), t.end(), sepre, -1), end;
         for (; iter != end; ++iter) words.push_back(*iter);
 
     }
