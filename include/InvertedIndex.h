@@ -7,11 +7,9 @@
 #include <vector>
 #include <map>
 #include <unordered_set>
-#include <set>
 #include <regex>
 #include <mutex>
 #include <thread>
-
 #include <utility>
 
 #ifndef SEARCH_ENGINE_INVERTEDINDEX_H

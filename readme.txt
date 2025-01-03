@@ -11,3 +11,63 @@
 5. В индексе ищутся те документы, на которых встречаются все эти слова.
 6. Результаты поиска ранжируются, сортируются и отдаются пользователю, максимальное количество возможных документов в ответе задаётся в конфигурационном файле.
 7. В конце программа формирует файл answers.json, в который записывает результаты поиска.
+
+Инструкция по сборке и запуску проекта (в системе должны быть установлены cmake и gcc):
+
+1. Скачайте и распакуйтк файлы репозитория https://github.com/alex-zamoev/search-engine2 в какую-нибудь папку, например c:\search-engine.
+2. Перейдите в эту папку и создайте в ней папку build.
+3. Перейдите в папку build и выполните следующие команды:
+	- cmake ..
+	-- cmake --build
+4. В результате у Вас будет собран исполняемый файл c:\search-engine\build\search_engine2.exe
+5. Файл с запросами requests.json должен лежать в папке c:\search-engine.
+6. Конфигурационный файл также должен лежать в папке c:\search-engine.
+7. Результаты поиска будут записаны в файл c:\search-engine\answers.json
+
+Примеры формата json файлов:
+
+1. Пример описания файла config.json:
+ {
+ 	"config": {
+ 		"name": "SkillboxSearchEngine",
+ 		"version": "0.1",
+ 		"max_responses": 5
+	},
+ 	"files": [
+ 		"../resources/file001.txt",
+		"../resources/file002.txt",
+		"../resources/file003.txt",
+		"../resources/file004.txt"
+	]
+}
+
+2. Пример файла с запросами requests.json:
+{
+	"requests": [
+ 		"some words..",
+		"some words..",
+		"some words..",
+		"some words.."
+	]
+}
+
+3. Файл с ответами на запросы answers.json
+{
+	"request0": {
+		"result": "true",
+		"relevance": {
+			"docid": 0, “rank” : 0.989,
+			"docid": 1, “rank” : 0.897,
+			"docid": 2, “rank” : 0.750,
+			"docid": 3, “rank” : 0.670,
+			"docid": 4, “rank” : 0.561
+ 		}
+ 	},
+	"request1": {
+		"result": "true",
+		"relevance":{"docid": 0, “rank” : 0.769}
+ 	},
+ 	"request2": {
+		"result": "false"
+ 	}
+}

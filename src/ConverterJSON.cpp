@@ -98,7 +98,7 @@ void ConverterJSON::putAnswers(std::map<int, std::vector<RelativeIndex>> answers
             for(auto &t : answers[i]){
                    answers_json[request]["relevance"].push_back(json::object({{"doc_id", t.doc_id}, {"rank", t.rank}}));
             }
-           }
+          }
         request = "";
     }
     outFile << answers_json;
