@@ -35,15 +35,16 @@ std::map<int, std::vector<RelativeIndex>> SearchServer::search(const std::vector
             entry = _index.GetWordCount(t);
             if(entry.size()>0){
                 for(auto &tt : entry){
-                    absRel[int(tt.doc_id)] += tt.count;
+                    absRel[int(tt.doc_id)] += tt.count; //Записываем в массив все вычисленные абс релевантности по каждому документу
                 }
             }
         }
 
         for(int i = 0; i < numDocs; i++){
-            if(absRel[i] > 0) results.insert({absRel[i], i});
+            if(absRel[i] > 0) results.insert({absRel[i], i}); // В результате получаем отсортированный по возрастанию список значений абсолютной релевантности
         }
 
+        // Но нам необходимо в итоге вернуть по уменьшению, поэтому считаем с конца
         if(results.size() > 0){
             std::multimap<int, int>::reverse_iterator it = results.rbegin();
             maxi = it->first;
@@ -58,6 +59,7 @@ std::map<int, std::vector<RelativeIndex>> SearchServer::search(const std::vector
         if(temp.size() > 0) rltIndx.insert(std::pair<int, std::vector<RelativeIndex>>(numReq, temp));
 
         numReq++;
+        //очищаем на следущем цикле
         uniqWords.clear();
         entry.clear();
         std::memset(absRel, 0 , sizeof(absRel));
